@@ -1,3 +1,5 @@
 <script setup lang="ts"></script>
 
-<style></style>
+<style lang="scss">
+@import "./static/fonts/iconfont.css";
+</style>

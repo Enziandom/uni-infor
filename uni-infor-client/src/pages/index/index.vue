@@ -10,21 +10,32 @@
         </van-swipe>
         <view class="activities">
           <Card v-for="(item, index) in activities" :key="index">
-            <view class="activity">
-              <view class="title">{{ item.name }}</view>
-              <view class="brief">{{ item.brief }}</view>
-              <view class="bottom">
+            <view class="activity font-color-gray1">
+              <view class="poster">
+                <van-row justify="start">
+                  <van-col span="3">
+                    <Avatar src="https://img2.baidu.com/it/u=966575083,3990920768&fm=253&app=120&size=w931&n=0&f=JPEG&fmt=auto?sec=1668963600&t=29f4f5474e0dc5ff664ef9f3c728c6fe" />
+                  </van-col>
+                  <van-col span="10">
+                    <view class="name"> Famiglistiom </view>
+                  </van-col>
+                </van-row>
+              </view>
+              <view class="title h6 font-color-gray2">{{ item.name }}</view>
+              <view class="brief size-30">{{ item.brief }}</view>
+              <view class="bottom size-26">
                 <view class="date">
-                  <view class="start-date">{{ item.startDate }}</view>
-                  <view class="end-date">{{ item.endDate }}</view>
+                  <view class="start-date">开始：{{ item.startDate }}</view>
+                  <view class="end-date">结束：{{ item.endDate }}</view>
                 </view>
                 <view class="time">
-                  <view class="start-time">{{ item.startTime }}</view>
-                  <view class="end-time">{{ item.endTime }}</view>
+                  <view class="start-time">时间段：{{ item.startTime }} ~ {{ item.endTime }}</view>
                 </view>
-                <view class="heat">
-                  <view class="approves">{{ item.approves }}</view>
-                  <view class="opposition">{{ item.opposition }}</view>
+                <view class="heat size-28 font-color-gray0">
+                  <van-row justify="end">
+                    <van-col span="5"><van-icon class-prefix="icon" name="good" />{{ item.approves }}</van-col>
+                    <van-col span="5"><van-icon class-prefix="icon" name="hot" />{{ item.opposition }}</van-col>
+                  </van-row>
                 </view>
               </view>
             </view>
@@ -162,7 +173,7 @@ let activities = ref([
 
 <style scoped lang="scss">
 @import "../../uni.scss";
-@import "../../styles/common.scss";
+@import "../../styles/font.scss";
 
 .content {
   background-color: $cust-bg-color;
@@ -170,17 +181,11 @@ let activities = ref([
 
 .activity {
   .title {
-    font-size: 40rpx;
     margin-bottom: 10rpx;
   }
 
   .brief {
-    font-size: 30rpx;
     margin-bottom: 10rpx;
-  }
-
-  .bottom {
-    @include flex($justify: flex-start);
   }
 }
 
