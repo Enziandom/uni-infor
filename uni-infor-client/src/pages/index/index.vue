@@ -1,150 +1,104 @@
 <template>
   <view class="content">
-    <van-tabs color="#409eff" v-model:active="active" animated swipeable sticky :offset-top="44 + statusBarHeight">
-      <van-tab title="正在进行">
-        <van-swipe class="my-swipe" :autoplay="3000">
-          <van-swipe-item>1</van-swipe-item>
-          <van-swipe-item>2</van-swipe-item>
-          <van-swipe-item>3</van-swipe-item>
-          <van-swipe-item>4</van-swipe-item>
-        </van-swipe>
-        <view class="activities">
-          <Card v-for="(item, index) in activities" :key="index">
-            <view class="activity font-color-gray1">
-              <view class="poster">
-                <van-row justify="start">
-                  <van-col span="3">
-                    <Avatar src="https://img2.baidu.com/it/u=966575083,3990920768&fm=253&app=120&size=w931&n=0&f=JPEG&fmt=auto?sec=1668963600&t=29f4f5474e0dc5ff664ef9f3c728c6fe" />
-                  </van-col>
-                  <van-col span="10">
-                    <view class="name"> Famiglistiom </view>
-                  </van-col>
-                </van-row>
+    <!-- <uni-swiper-dot class="uni-swiper-dot-box" @clickItem="clickItem" :info="info" :current="current" :mode="mode" :dots-styles="dotsStyles" field="content">
+      <swiper class="swiper-box" @change="change" :current="swiperDotIndex">
+        <swiper-item v-for="(item, index) in 3" :key="index">
+          <view class="swiper-item" :class="'swiper-item' + index">
+            <text style="color: #fff; font-size: 32px">{{ index + 1 }}</text>
+          </view>
+        </swiper-item>
+      </swiper>
+    </uni-swiper-dot> -->
+    <view class="tabs">
+      <view class="tab-item" :style="{ width: tabItemWidth + 'px' }" :class="{ 'tab-item-active': currentTab == index }" v-for="(item, index) in tabsData" :key="index" @tap.stop="changeTabs(index)">
+        {{ item }}
+      </view>
+      <view class="tab-item-slider" :style="{ transform: 'translateX(' + translateX + 'px)' }"></view>
+    </view>
+    <swiper class="swiper" circular @change="changeSwiper" :current="current">
+      <swiper-item>
+        <view class="swiper-item uni-bg-red">A</view>
+      </swiper-item>
+      <swiper-item>
+        <view class="swiper-item uni-bg-green">B</view>
+      </swiper-item>
+      <swiper-item>
+        <view class="swiper-item uni-bg-blue">C</view>
+      </swiper-item>
+      <swiper-item>
+        <view class="swiper-item uni-bg-blue">D</view>
+      </swiper-item>
+    </swiper>
+    <view class="activities">
+      <uni-card class="card" spacing="5px" margin="5px" :is-shadow="true" v-for="(item, index) in activities" :key="index">
+        <view class="activity font-color-gray1">
+          <view class="poster">
+            <view justify="start">
+              <view span="3">
+                <Avatar src="https://img2.baidu.com/it/u=966575083,3990920768&fm=253&app=120&size=w931&n=0&f=JPEG&fmt=auto?sec=1668963600&t=29f4f5474e0dc5ff664ef9f3c728c6fe" />
               </view>
-              <view class="title h6 font-color-gray2">{{ item.name }}</view>
-              <view class="brief size-30">{{ item.brief }}</view>
-              <view class="bottom size-26">
-                <view class="date">
-                  <view class="start-date">开始：{{ item.startDate }}</view>
-                  <view class="end-date">结束：{{ item.endDate }}</view>
-                </view>
-                <view class="time">
-                  <view class="start-time">时间段：{{ item.startTime }} ~ {{ item.endTime }}</view>
-                </view>
-                <view class="heat size-28 font-color-gray0">
-                  <van-row justify="end">
-                    <van-col span="5"><van-icon class-prefix="icon" name="good" />{{ item.approves }}</van-col>
-                    <van-col span="5"><van-icon class-prefix="icon" name="hot" />{{ item.opposition }}</van-col>
-                  </van-row>
-                </view>
-              </view>
-            </view>
-          </Card>
-        </view>
-      </van-tab>
-      <van-tab title="活动预告">
-        <view class="activities">
-          <Card v-for="(item, index) in activities" :key="index">
-            <view class="activity">
-              <view class="title">{{ item.name }}</view>
-              <view class="brief">{{ item.brief }}</view>
-              <view class="bottom">
-                <view class="date">
-                  <view class="start-date">{{ item.startDate }}</view>
-                  <view class="end-date">{{ item.endDate }}</view>
-                </view>
-                <view class="time">
-                  <view class="start-time">{{ item.startTime }}</view>
-                  <view class="end-time">{{ item.endTime }}</view>
-                </view>
-                <view class="heat">
-                  <view class="approves">{{ item.approves }}</view>
-                  <view class="opposition">{{ item.opposition }}</view>
-                </view>
+              <view span="10">
+                <view class="name"> Famiglistiom </view>
               </view>
             </view>
-          </Card>
-        </view>
-      </van-tab>
-      <van-tab title="二课活动">
-        <view class="activities">
-          <view class="activity" v-for="(item, index) in activities" :key="index">
-            <view class="title">{{ item.name }}</view>
-            <view class="brief">{{ item.brief }}</view>
-            <view class="bottom">
-              <view class="date">
-                <view class="start-date">{{ item.startDate }}</view>
-                <view class="end-date">{{ item.endDate }}</view>
-              </view>
-              <view class="time">
-                <view class="start-time">{{ item.startTime }}</view>
-                <view class="end-time">{{ item.endTime }}</view>
-              </view>
-              <view class="heat">
-                <view class="approves">{{ item.approves }}</view>
-                <view class="opposition">{{ item.opposition }}</view>
+          </view>
+          <view class="title h6 font-color-gray2">{{ item.name }}</view>
+          <view class="brief size-30">{{ item.brief }}</view>
+          <view class="bottom size-26">
+            <view class="date">
+              <view span="12" class="start-date">开始：{{ item.startDate }}</view>
+              <view span="12" class="end-date">结束：{{ item.endDate }}</view>
+            </view>
+            <view class="time">
+              <view class="start-time">时间段：{{ item.startTime }} ~ {{ item.endTime }}</view>
+            </view>
+            <view class="heat size-28 font-color-gray0">
+              <view justify="end">
+                <view span="5">{{ item.approves }}</view>
+                <view span="5">{{ item.opposition }}</view>
               </view>
             </view>
           </view>
         </view>
-      </van-tab>
-      <van-tab title="素拓活动">
-        <view class="activities">
-          <view class="activity" v-for="(item, index) in activities" :key="index">
-            <view class="title">{{ item.name }}</view>
-            <view class="brief">{{ item.brief }}</view>
-            <view class="bottom">
-              <view class="date">
-                <view class="start-date">{{ item.startDate }}</view>
-                <view class="end-date">{{ item.endDate }}</view>
-              </view>
-              <view class="time">
-                <view class="start-time">{{ item.startTime }}</view>
-                <view class="end-time">{{ item.endTime }}</view>
-              </view>
-              <view class="heat">
-                <view class="approves">{{ item.approves }}</view>
-                <view class="opposition">{{ item.opposition }}</view>
-              </view>
-            </view>
-          </view>
-        </view>
-      </van-tab>
-      <van-tab title="往期活动">
-        <view class="activities">
-          <view class="activity" v-for="(item, index) in activities" :key="index">
-            <view class="title">{{ item.name }}</view>
-            <view class="brief">{{ item.brief }}</view>
-            <view class="bottom">
-              <view class="date">
-                <view class="start-date">{{ item.startDate }}</view>
-                <view class="end-date">{{ item.endDate }}</view>
-              </view>
-              <view class="time">
-                <view class="start-time">{{ item.startTime }}</view>
-                <view class="end-time">{{ item.endTime }}</view>
-              </view>
-              <view class="heat">
-                <view class="approves">{{ item.approves }}</view>
-                <view class="opposition">{{ item.opposition }}</view>
-              </view>
-            </view>
-          </view>
-        </view>
-      </van-tab>
-    </van-tabs>
+      </uni-card>
+    </view>
   </view>
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
-import { onLoad } from "@dcloudio/uni-app";
+import { ref, onMounted } from "vue";
 
-const active = ref(0);
-let statusBarHeight = ref<any>(0);
+const tabsData: any = ["今日特拼", "全部", "新品", "禁用状态"];
 
-onLoad(() => {
-  statusBarHeight.value = uni.getSystemInfoSync().statusBarHeight;
+const current = ref(0);
+const currentTab = ref(0);
+const tabs = ref(null);
+
+function changeTabs(index: number) {
+  current.value = index;
+}
+
+function changeSwiper(index: any) {
+  let _index = index.detail.current;
+  translateX.value = (tabItemWidth.value - 50) / 2 + tabItemWidth.value * _index;
+  if (_index === 0) {
+    translateX.value = (tabItemWidth.value - 50) / 2;
+  }
+  currentTab.value = _index;
+}
+
+let tabItemWidth = ref(0);
+let translateX = ref(0);
+
+onMounted(() => {
+  setTimeout(() => {
+    uni.getSystemInfo({
+      success: res => {
+        tabItemWidth.value = res.windowWidth / tabsData.length;
+        translateX.value = (tabItemWidth.value - 50) / 2;
+      }
+    });
+  }, 0);
 });
 
 let activities = ref([
@@ -174,35 +128,48 @@ let activities = ref([
 <style scoped lang="scss">
 @import "../../uni.scss";
 @import "../../styles/font.scss";
+@import "../../styles/mixins.scss";
 
 .content {
   background-color: $cust-bg-color;
 }
 
-.activity {
-  .title {
-    margin-bottom: 10rpx;
+.tabs {
+  height: 35px;
+  position: relative;
+  @include flex($justify: space-between);
+
+  .tab-item {
+    height: 25px;
+    @include flex();
   }
 
-  .brief {
-    margin-bottom: 10rpx;
+  .tab-item-active {
+    color: #5677fc;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .tab-item-slider {
+    transition: all 0.2s ease-in-out;
+    background-color: #5677fc;
+    position: absolute;
+    height: 5px;
+    border-radius: 10px;
+    width: 50px;
+    bottom: 0;
+    left: 0;
   }
 }
 
-.custom-indicator {
-  position: absolute;
-  right: 5px;
-  bottom: 5px;
-  padding: 2px 5px;
-  font-size: 12px;
-  background: rgba(0, 0, 0, 0.1);
-}
+.activities {
+  .activity {
+    .title {
+      margin-bottom: 10rpx;
+    }
 
-.my-swipe .van-swipe-item {
-  color: #fff;
-  font-size: 20px;
-  line-height: 150px;
-  text-align: center;
-  background-color: #39a9ed;
+    .brief {
+      margin-bottom: 10rpx;
+    }
+  }
 }
 </style>
