@@ -55,17 +55,19 @@ onMounted(() => {
 
 <template>
   <view class="tab-page">
-    <view class="tabs">
-      <view
-        class="tab-item"
-        :style="{ width: tabItemWidth + 'px' }"
-        :class="{ 'tab-item-active': tabBarIndex == index }"
-        v-for="(tabItem, index) in tabsData"
-        :key="index"
-        @tap.stop="changeTabs(index)">
-        {{ tabItem }}
+    <view class="tabbar">
+      <view class="tab-wrapper">
+        <view
+          class="tab-item"
+          :style="{ width: tabItemWidth + 'px' }"
+          :class="{ 'tab-item-active': tabBarIndex == index }"
+          v-for="(tabItem, index) in tabsData"
+          :key="index"
+          @tap.stop="changeTabs(index)">
+          {{ tabItem }}
+        </view>
+        <view class="tab-item-slider" :style="{ transform: 'translateX(' + translateX + 'px)' }"></view>
       </view>
-      <view class="tab-item-slider" :style="{ transform: 'translateX(' + translateX + 'px)' }"></view>
     </view>
     <swiper class="swiper" :style="{ height: swiperHeightInfo[swiperIndex].height + 'px' }" circular @change="changeSwiper" :current="swiperIndex">
       <swiper-item :class="'swiper-item-' + index" v-for="(swiperItem, index) in tabsData.length" :key="index">
@@ -80,7 +82,13 @@ onMounted(() => {
 @import "../styles/font.scss";
 @import "../styles/mixins.scss";
 
-.tabs {
+.tabbar {
+  height: 35px;
+  z-index: 999;
+  background-color: white;
+}
+
+.tab-wrapper {
   height: 35px;
   position: relative;
   @include flex($justify: space-between);

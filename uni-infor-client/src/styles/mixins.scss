@@ -6,3 +6,12 @@
   flex-direction: $flex-dir;
   flex-wrap: $flex-wrap;
 }
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}

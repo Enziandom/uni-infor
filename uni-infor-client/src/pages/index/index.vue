@@ -2,188 +2,21 @@
   <view class="content">
     <tab-page>
       <template v-slot:swiper0>
-        <!-- <uni-swiper-dot class="uni-swiper-dot-box" @clickItem="clickItem" :info="info" :current="current" :mode="mode" :dots-styles="dotsStyles" field="content">
-          <swiper class="swiper-box" @change="change" :current="swiperDotIndex">
-            <swiper-item v-for="(item, index) in 3" :key="index">
-              <view class="swiper-item" :class="'swiper-item' + index">
-                <text style="color: #fff; font-size: 32px">{{ index + 1 }}</text>
-              </view>
-            </swiper-item>
-          </swiper>
-        </uni-swiper-dot> -->
-        <view class="activities swiper0">
-          <uni-card class="card" spacing="5px" margin="5px" :is-shadow="true" v-for="(item, index) in activities" :key="index">
-            <view class="activity font-color-gray1">
-              <view class="poster">
-                <view justify="start">
-                  <view span="3">
-                    <Avatar src="https://img2.baidu.com/it/u=966575083,3990920768&fm=253&app=120&size=w931&n=0&f=JPEG&fmt=auto?sec=1668963600&t=29f4f5474e0dc5ff664ef9f3c728c6fe" />
-                  </view>
-                  <view span="10">
-                    <view class="name"> Famiglistiom </view>
-                  </view>
-                </view>
-              </view>
-              <view class="title h6 font-color-gray2">{{ item.name }}</view>
-              <view class="brief size-30">{{ item.brief }}</view>
-              <view class="bottom size-26">
-                <view class="date">
-                  <view span="12" class="start-date">开始：{{ item.startDate }}</view>
-                  <view span="12" class="end-date">结束：{{ item.endDate }}</view>
-                </view>
-                <view class="time">
-                  <view class="start-time">时间段：{{ item.startTime }} ~ {{ item.endTime }}</view>
-                </view>
-                <view class="heat size-28 font-color-gray0">
-                  <view justify="end">
-                    <view span="5">{{ item.approves }}</view>
-                    <view span="5">{{ item.opposition }}</view>
-                  </view>
-                </view>
-              </view>
-            </view>
-          </uni-card>
+        <view class="swiper0">
+          <activities :data="conducting" />
         </view>
       </template>
       <template v-slot:swiper1>
-        <view class="swiper1">
-          <uni-card class="card" spacing="5px" margin="5px" :is-shadow="true" v-for="(item, index) in activities" :key="index">
-            <view class="activity font-color-gray1">
-              <view class="poster">
-                <view justify="start">
-                  <view span="3">
-                    <Avatar src="https://img2.baidu.com/it/u=966575083,3990920768&fm=253&app=120&size=w931&n=0&f=JPEG&fmt=auto?sec=1668963600&t=29f4f5474e0dc5ff664ef9f3c728c6fe" />
-                  </view>
-                  <view span="10">
-                    <view class="name"> Famiglistiom </view>
-                  </view>
-                </view>
-              </view>
-              <view class="title h6 font-color-gray2">{{ item.name }}</view>
-              <view class="brief size-30">{{ item.brief }}</view>
-              <view class="bottom size-26">
-                <view class="date">
-                  <view span="12" class="start-date">开始：{{ item.startDate }}</view>
-                  <view span="12" class="end-date">结束：{{ item.endDate }}</view>
-                </view>
-                <view class="time">
-                  <view class="start-time">时间段：{{ item.startTime }} ~ {{ item.endTime }}</view>
-                </view>
-                <view class="heat size-28 font-color-gray0">
-                  <view justify="end">
-                    <view span="5">{{ item.approves }}</view>
-                    <view span="5">{{ item.opposition }}</view>
-                  </view>
-                </view>
-              </view>
-            </view>
-          </uni-card>
-        </view>
+        <view class="swiper1"> </view>
       </template>
       <template v-slot:swiper2>
-        <view class="swiper2">
-          <uni-card class="card" spacing="5px" margin="5px" :is-shadow="true" v-for="(item, index) in activities" :key="index">
-            <view class="activity font-color-gray1">
-              <view class="poster">
-                <view justify="start">
-                  <view span="3">
-                    <Avatar src="https://img2.baidu.com/it/u=966575083,3990920768&fm=253&app=120&size=w931&n=0&f=JPEG&fmt=auto?sec=1668963600&t=29f4f5474e0dc5ff664ef9f3c728c6fe" />
-                  </view>
-                  <view span="10">
-                    <view class="name"> Famiglistiom </view>
-                  </view>
-                </view>
-              </view>
-              <view class="title h6 font-color-gray2">{{ item.name }}</view>
-              <view class="brief size-30">{{ item.brief }}</view>
-              <view class="bottom size-26">
-                <view class="date">
-                  <view span="12" class="start-date">开始：{{ item.startDate }}</view>
-                  <view span="12" class="end-date">结束：{{ item.endDate }}</view>
-                </view>
-                <view class="time">
-                  <view class="start-time">时间段：{{ item.startTime }} ~ {{ item.endTime }}</view>
-                </view>
-                <view class="heat size-28 font-color-gray0">
-                  <view justify="end">
-                    <view span="5">{{ item.approves }}</view>
-                    <view span="5">{{ item.opposition }}</view>
-                  </view>
-                </view>
-              </view>
-            </view>
-          </uni-card>
-        </view>
+        <view class="swiper2"> </view>
       </template>
       <template v-slot:swiper3>
-        <view class="swiper3">
-          <uni-card class="card" spacing="5px" margin="5px" :is-shadow="true" v-for="(item, index) in activities" :key="index">
-            <view class="activity font-color-gray1">
-              <view class="poster">
-                <view justify="start">
-                  <view span="3">
-                    <Avatar src="https://img2.baidu.com/it/u=966575083,3990920768&fm=253&app=120&size=w931&n=0&f=JPEG&fmt=auto?sec=1668963600&t=29f4f5474e0dc5ff664ef9f3c728c6fe" />
-                  </view>
-                  <view span="10">
-                    <view class="name"> Famiglistiom </view>
-                  </view>
-                </view>
-              </view>
-              <view class="title h6 font-color-gray2">{{ item.name }}</view>
-              <view class="brief size-30">{{ item.brief }}</view>
-              <view class="bottom size-26">
-                <view class="date">
-                  <view span="12" class="start-date">开始：{{ item.startDate }}</view>
-                  <view span="12" class="end-date">结束：{{ item.endDate }}</view>
-                </view>
-                <view class="time">
-                  <view class="start-time">时间段：{{ item.startTime }} ~ {{ item.endTime }}</view>
-                </view>
-                <view class="heat size-28 font-color-gray0">
-                  <view justify="end">
-                    <view span="5">{{ item.approves }}</view>
-                    <view span="5">{{ item.opposition }}</view>
-                  </view>
-                </view>
-              </view>
-            </view>
-          </uni-card>
-        </view>
+        <view class="swiper3"></view>
       </template>
       <template v-slot:swiper4>
-        <view class="swiper4">
-          <uni-card class="card" spacing="5px" margin="5px" :is-shadow="true" v-for="(item, index) in activities" :key="index">
-            <view class="activity font-color-gray1">
-              <view class="poster">
-                <view justify="start">
-                  <view span="3">
-                    <Avatar src="https://img2.baidu.com/it/u=966575083,3990920768&fm=253&app=120&size=w931&n=0&f=JPEG&fmt=auto?sec=1668963600&t=29f4f5474e0dc5ff664ef9f3c728c6fe" />
-                  </view>
-                  <view span="10">
-                    <view class="name"> Famiglistiom </view>
-                  </view>
-                </view>
-              </view>
-              <view class="title h6 font-color-gray2">{{ item.name }}</view>
-              <view class="brief size-30">{{ item.brief }}</view>
-              <view class="bottom size-26">
-                <view class="date">
-                  <view span="12" class="start-date">开始：{{ item.startDate }}</view>
-                  <view span="12" class="end-date">结束：{{ item.endDate }}</view>
-                </view>
-                <view class="time">
-                  <view class="start-time">时间段：{{ item.startTime }} ~ {{ item.endTime }}</view>
-                </view>
-                <view class="heat size-28 font-color-gray0">
-                  <view justify="end">
-                    <view span="5">{{ item.approves }}</view>
-                    <view span="5">{{ item.opposition }}</view>
-                  </view>
-                </view>
-              </view>
-            </view>
-          </uni-card>
-        </view>
+        <view class="swiper4"></view>
       </template>
     </tab-page>
   </view>
@@ -192,7 +25,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 
-let activities = ref([
+let conducting = ref([
   {
     name: "我想对你说",
     startDate: "2022-11-17",
