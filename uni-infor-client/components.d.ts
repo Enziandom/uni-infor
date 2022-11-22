@@ -10,5 +10,6 @@ declare module '@vue/runtime-core' {
     Avatar: typeof import('./src/components/Avatar.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    TabPage: typeof import('./src/components/TabPage.vue')['default']
   }
 }
