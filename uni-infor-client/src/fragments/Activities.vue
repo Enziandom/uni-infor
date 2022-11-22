@@ -24,7 +24,7 @@ function navigate(id: number) {
               <Avatar :src="item.poster.avatar" />
               <view class="name size-30"> {{ item.poster.name }} </view>
             </view>
-            <tui-button type="green" width="100rpx" height="40rpx" plain :size="16">订阅</tui-button>
+            <tui-button type="green" width="100rpx" height="40rpx" plain :size="16">+订阅</tui-button>
           </view>
           <view class="title h6 font-color-gray2">{{ item.name }}</view>
           <view class="brief size-30 font-color-gray3">{{ item.brief }}</view>

@@ -2,7 +2,7 @@ export const data = <any>[
   {
     id: 10000,
     poster: {
-      name: "Famiglistiom",
+      name: "智能科技学院学术部",
       avatar: "https://img2.baidu.com/it/u=966575083,3990920768&fm=253&app=120&size=w931&n=0&f=JPEG&fmt=auto?sec=1668963600&t=29f4f5474e0dc5ff664ef9f3c728c6fe"
     },
     name: "第十届程序设计大赛",
@@ -23,7 +23,7 @@ export const data = <any>[
   {
     id: 10001,
     poster: {
-      name: "Pulp Fiction",
+      name: "Oracle 俱乐部",
       avatar: "https://img2.baidu.com/it/u=2269622343,3274358192&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500"
     },
     name: "第十三届企业信息化成果展示大赛",
@@ -46,7 +46,7 @@ export const data = <any>[
   {
     id: 10002,
     poster: {
-      name: "Pulp Fiction",
+      name: "智能科技学院勤工俭学",
       avatar: "https://img2.baidu.com/it/u=2269622343,3274358192&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500"
     },
     place: "绵阳校区3407教室",
