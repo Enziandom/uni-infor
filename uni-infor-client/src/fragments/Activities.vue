@@ -1,43 +1,52 @@
 <script setup lang="ts">
-import { ref } from "vue";
-
-let dotIndex = ref(0);
-
-function changeDot({ detail: { current: index } }: any) {
-  dotIndex.value = index;
-}
+import { ActivityType } from "../types/enums";
 
 defineProps({
   data: {
-    type: Array<any>,
-    required: true
+    type: Array<any>
   }
 });
 </script>
 
 <template>
   <view class="activity-conducting">
-    <uni-swiper-dot class="uni-swiper-dot-box" :info="[1, 3, 4]" :current="dotIndex" field="content">
-      <swiper class="swiper-box" @change="changeDot">
-        <swiper-item v-for="(item, index) in 3" :key="index"> </swiper-item>
-      </swiper>
-    </uni-swiper-dot>
     <view class="activities swiper0">
       <uni-card class="card" spacing="5px" margin="5px" :is-shadow="true" v-for="(item, index) in data" :key="index">
         <view class="activity font-color-gray1">
-          <view class="poster">
-            <Avatar src="https://img2.baidu.com/it/u=966575083,3990920768&fm=253&app=120&size=w931&n=0&f=JPEG&fmt=auto?sec=1668963600&t=29f4f5474e0dc5ff664ef9f3c728c6fe" />
-            <view class="name size-30"> Famiglistiom </view>
+          <view class="top">
+            <view class="poster">
+              <Avatar :src="item.poster.avatar" />
+              <view class="name size-30"> {{ item.poster.name }} </view>
+            </view>
+            <tui-button type="green" width="100rpx" height="40rpx" plain :size="16">订阅</tui-button>
           </view>
           <view class="title h6 font-color-gray2">{{ item.name }}</view>
-          <view class="brief size-30">{{ item.brief }}</view>
-          <view class="bottom size-26">
-            <view class="date">
-              <view span="12" class="start-date">开始：{{ item.startDate }}</view>
-              <view span="12" class="end-date">结束：{{ item.endDate }}</view>
+          <view class="brief size-30 font-color-gray3">{{ item.brief }}</view>
+          <view class="bottom size-26 size-26 font-color-gray0">
+            <view class="col-1">
+              <view span="12" class="start-date">开始日期：{{ item.startDate }}</view>
+              <view span="12" class="end-date">结束日期：{{ item.endDate }}</view>
             </view>
-            <view class="start-time">时间段：{{ item.startTime }} ~ {{ item.endTime }}</view>
-            <view class="heat size-28 font-color-gray0">
+            <view class="col-2">
+              <view class="time-range">时间范围：{{ item.startTime }} ~ {{ item.endTime }}</view>
+              <view class="tags">
+                <template v-if="item.type === ActivityType.ALL">
+                  <tui-tag class="tag" type="primary" plain size="18rpx" shape="circle">二课</tui-tag>
+                  <tui-tag class="tag" type="green" plain size="18rpx" shape="circle">素拓</tui-tag>
+                </template>
+                <template v-else-if="item.type === ActivityType.ERKE">
+                  <tui-tag class="tag" type="primary" plain size="18rpx" shape="circle">二课</tui-tag>
+                </template>
+                <template v-else-if="item.type === ActivityType.SUTUO">
+                  <tui-tag class="tag" type="green" plain size="18rpx" shape="circle">素拓</tui-tag>
+                </template>
+              </view>
+            </view>
+            <view class="col-3">
+              <view class="way">活动方式：{{ item.way }}</view>
+              <view class="place">活动地点：{{ item.place }}</view>
+            </view>
+            <view class="col-4">
               <view class="flex-center" style="margin: 0 8px 0 0"><tui-icon name="eye" :size="18" style="margin: 0 3px 0 0"></tui-icon>{{ item.approves }}</view>
               <view class="flex-center" span="5"><tui-icon name="agree" :size="18" style="margin: 0 3px 0 0"></tui-icon>{{ item.opposition }}</view>
             </view>
@@ -57,20 +66,41 @@ defineProps({
   .activity {
     .title,
     .brief,
-    .poster {
+    .poster,
+    .bottom {
       margin-bottom: 15rpx;
+    }
+
+    .col-3,
+    .col-2,
+    .col-1 {
+      margin-bottom: 10rpx;
     }
 
     .poster {
       @include flex($justify: flex-start);
     }
 
-    .date {
+    .col-1,
+    .col-2,
+    .col-3,
+    .tags,
+    .top {
       @include flex($justify: space-between);
     }
 
-    .heat {
+    .col-4 {
       @include flex($justify: flex-end);
+    }
+
+    .col-2 {
+      .time-range {
+        margin-right: 10px;
+      }
+
+      .tag {
+        margin-right: 4px !important;
+      }
     }
   }
 

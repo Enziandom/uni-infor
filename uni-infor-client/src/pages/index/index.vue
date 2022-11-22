@@ -3,20 +3,27 @@
     <tab-page>
       <template v-slot:swiper0>
         <view class="swiper0">
-          <activities :data="conducting" />
+          <uni-swiper-dot :info="dots" field="content" :current="dotIndex" mode="round">
+            <swiper @change="changeDot" class="swiper-box" :current="dotIndex">
+              <swiper-item v-for="(item, index) in dots" :key="index">
+                <image class="image" :src="item" mode="aspectFill"> </image>
+              </swiper-item>
+            </swiper>
+          </uni-swiper-dot>
+          <activities :data="conducting0" />
         </view>
       </template>
       <template v-slot:swiper1>
-        <view class="swiper1"> </view>
+        <view class="swiper1"><activities :data="conducting1" /></view>
       </template>
       <template v-slot:swiper2>
-        <view class="swiper2"> </view>
+        <view class="swiper2"><activities :data="conducting2" /></view>
       </template>
       <template v-slot:swiper3>
-        <view class="swiper3"></view>
+        <view class="swiper3"><activities :data="conducting3" /></view>
       </template>
       <template v-slot:swiper4>
-        <view class="swiper4"></view>
+        <view class="swiper4"><activities :data="conducting4" /></view>
       </template>
     </tab-page>
   </view>
@@ -24,9 +31,91 @@
 
 <script setup lang="ts">
 import { ref } from "vue";
+import { onLoad } from "@dcloudio/uni-app";
 
-let conducting = ref([
+let dotIndex = ref(0);
+
+function changeDot({ detail: { current: index } }: any) {
+  dotIndex.value = index;
+}
+
+onLoad(() => {
+  setInterval(() => {
+    dotIndex.value++;
+    if (dotIndex.value >= dots.length) {
+      dotIndex.value = 0;
+    }
+  }, 2000);
+});
+
+let dots = [
+  "https://www.tfswufe.edu.cn/__local/D/A8/23/C69EC720544DB84989102C9CD70_841FDF40_2C732.jpg",
+  "https://www.tfswufe.edu.cn/__local/0/94/84/994C4950202F176A1077CB05C5F_99B4026A_82B79.jpg",
+  "https://www.tfswufe.edu.cn/__local/4/2A/37/3086A25DEF266F9D1E04A2FE6B4_DF2B1AFC_ACBC3.png"
+];
+
+let conducting0 = ref([
   {
+    poster: {
+      name: "Famiglistiom",
+      avatar: "https://img2.baidu.com/it/u=966575083,3990920768&fm=253&app=120&size=w931&n=0&f=JPEG&fmt=auto?sec=1668963600&t=29f4f5474e0dc5ff664ef9f3c728c6fe"
+    },
+    name: "第十届程序设计大赛",
+    startDate: "2022-11-15",
+    endDate: "2022-11-30",
+    startTime: "00:00",
+    place: "绵阳校区3407教室",
+    way: "线下",
+    endTime: "24:00",
+    opposition: 0,
+    approves: 233,
+    type: 0,
+    brief: "此次程序设计大赛旨在进一步加强学校教学质量工程建设，提高学生们的创造力以及运用计算机技术开发程序的综合能力，培养学生们的创新思维与合作精神，激发广大学生的学习热情。"
+  },
+  {
+    poster: {
+      name: "Pulp Fiction",
+      avatar: "https://img2.baidu.com/it/u=2269622343,3274358192&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500"
+    },
+    name: "第十三届企业信息化成果展示大赛",
+    place: "绵阳校区3407教室",
+    way: "线下",
+    startDate: "2022-11-10",
+    endDate: "2022-12-1",
+    startTime: "00:00",
+    endTime: "24:00",
+    opposition: 1,
+    approves: 333,
+    type: 2,
+    brief:
+      "当今时代发展的大方向是趋于信息化时代。与此同时，信息化的理念也在各行各业的企业管理过程中占据着重要地位。现由西南财经大学天府学院智能科技学院主办，西南财经大学天府学院甲骨文俱乐部承办的企业信息化成果展示大赛即将在我院拉开帷幕。"
+  },
+  {
+    poster: {
+      name: "Pulp Fiction",
+      avatar: "https://img2.baidu.com/it/u=2269622343,3274358192&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500"
+    },
+    place: "绵阳校区3407教室",
+    way: "线下",
+    startDate: "2022-11-18",
+    endDate: "2022-11-27",
+    startTime: "00:00",
+    endTime: "24:00",
+    opposition: 1,
+    approves: 333,
+    type: 2,
+    name: `“智芯”电子焊接大赛`,
+    brief:
+      "踏入校园，恰逢天府20载！走进天府，迎接校园生日。在我校20周年到来之际，为全面提高大学生的综合素质，加强师生之间的交流，丰富大学校园的文化生活，引领校园文化的主流，促进同学们的学习、交流并激发他们学习的兴趣，同时也为了凸显本学院的特色，增强同学们对焊接相关技术领域的学习，提高专业技能。因此，在校庆到来之际特举办“智芯”电子焊接大赛体现智科学子的风采。"
+  }
+]);
+
+let conducting1 = ref([
+  {
+    poster: {
+      name: "Famiglistiom",
+      avatar: "https://img2.baidu.com/it/u=966575083,3990920768&fm=253&app=120&size=w931&n=0&f=JPEG&fmt=auto?sec=1668963600&t=29f4f5474e0dc5ff664ef9f3c728c6fe"
+    },
     name: "我想对你说",
     startDate: "2022-11-17",
     endDate: "2022-11-19",
@@ -37,6 +126,103 @@ let conducting = ref([
     brief: "在这里，你可以拥有自己的舞台，你可以绽放自己的光彩。"
   },
   {
+    poster: {
+      name: "Famiglistiom",
+      avatar: "https://img2.baidu.com/it/u=966575083,3990920768&fm=253&app=120&size=w931&n=0&f=JPEG&fmt=auto?sec=1668963600&t=29f4f5474e0dc5ff664ef9f3c728c6fe"
+    },
+    name: "程序设计大赛",
+    startDate: "2022-11-18",
+    endDate: "2022-11-20",
+    startTime: "14:00",
+    endTime: "16:00",
+    opposition: 1,
+    approves: 333,
+    brief: "在这里，你会锻炼自我、收获成长，你会有志同道合的朋友；"
+  }
+]);
+
+let conducting2 = ref([
+  {
+    poster: {
+      name: "Famiglistiom",
+      avatar: "https://img2.baidu.com/it/u=966575083,3990920768&fm=253&app=120&size=w931&n=0&f=JPEG&fmt=auto?sec=1668963600&t=29f4f5474e0dc5ff664ef9f3c728c6fe"
+    },
+    name: "我想对你说",
+    startDate: "2022-11-17",
+    endDate: "2022-11-19",
+    startTime: "10:00",
+    endTime: "12:00",
+    opposition: 0,
+    approves: 233,
+    brief: "在这里，你可以拥有自己的舞台，你可以绽放自己的光彩。"
+  },
+  {
+    poster: {
+      name: "Famiglistiom",
+      avatar: "https://img2.baidu.com/it/u=966575083,3990920768&fm=253&app=120&size=w931&n=0&f=JPEG&fmt=auto?sec=1668963600&t=29f4f5474e0dc5ff664ef9f3c728c6fe"
+    },
+    name: "程序设计大赛",
+    startDate: "2022-11-18",
+    endDate: "2022-11-20",
+    startTime: "14:00",
+    endTime: "16:00",
+    opposition: 1,
+    approves: 333,
+    brief: "在这里，你会锻炼自我、收获成长，你会有志同道合的朋友；"
+  }
+]);
+
+let conducting3 = ref([
+  {
+    poster: {
+      name: "Famiglistiom",
+      avatar: "https://img2.baidu.com/it/u=966575083,3990920768&fm=253&app=120&size=w931&n=0&f=JPEG&fmt=auto?sec=1668963600&t=29f4f5474e0dc5ff664ef9f3c728c6fe"
+    },
+    name: "我想对你说",
+    startDate: "2022-11-17",
+    endDate: "2022-11-19",
+    startTime: "10:00",
+    endTime: "12:00",
+    opposition: 0,
+    approves: 233,
+    brief: "在这里，你可以拥有自己的舞台，你可以绽放自己的光彩。"
+  },
+  {
+    poster: {
+      name: "Famiglistiom",
+      avatar: "https://img2.baidu.com/it/u=966575083,3990920768&fm=253&app=120&size=w931&n=0&f=JPEG&fmt=auto?sec=1668963600&t=29f4f5474e0dc5ff664ef9f3c728c6fe"
+    },
+    name: "程序设计大赛",
+    startDate: "2022-11-18",
+    endDate: "2022-11-20",
+    startTime: "14:00",
+    endTime: "16:00",
+    opposition: 1,
+    approves: 333,
+    brief: "在这里，你会锻炼自我、收获成长，你会有志同道合的朋友；"
+  }
+]);
+
+let conducting4 = ref([
+  {
+    poster: {
+      name: "Famiglistiom",
+      avatar: "https://img2.baidu.com/it/u=966575083,3990920768&fm=253&app=120&size=w931&n=0&f=JPEG&fmt=auto?sec=1668963600&t=29f4f5474e0dc5ff664ef9f3c728c6fe"
+    },
+    name: "我想对你说",
+    startDate: "2022-11-17",
+    endDate: "2022-11-19",
+    startTime: "10:00",
+    endTime: "12:00",
+    opposition: 0,
+    approves: 233,
+    brief: "在这里，你可以拥有自己的舞台，你可以绽放自己的光彩。"
+  },
+  {
+    poster: {
+      name: "Famiglistiom",
+      avatar: "https://img2.baidu.com/it/u=966575083,3990920768&fm=253&app=120&size=w931&n=0&f=JPEG&fmt=auto?sec=1668963600&t=29f4f5474e0dc5ff664ef9f3c728c6fe"
+    },
     name: "程序设计大赛",
     startDate: "2022-11-18",
     endDate: "2022-11-20",
@@ -56,15 +242,11 @@ let conducting = ref([
 
 .content {
   background-color: $cust-bg-color;
-}
-.activities {
-  .activity {
-    .title {
-      margin-bottom: 10rpx;
-    }
 
-    .brief {
-      margin-bottom: 10rpx;
+  .swiper0 {
+    .image {
+      width: 100% !important;
+      height: 180px !important;
     }
   }
 }
