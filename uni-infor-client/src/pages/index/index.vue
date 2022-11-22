@@ -3,14 +3,14 @@
     <tab-page>
       <template v-slot:swiper0>
         <view class="swiper0">
-          <uni-swiper-dot :info="dots" field="content" :current="dotIndex" mode="round">
+          <uni-swiper-dot class="dot" :info="dots" field="content" :current="dotIndex" mode="default">
             <swiper @change="changeDot" class="swiper-box" :current="dotIndex">
               <swiper-item v-for="(item, index) in dots" :key="index">
                 <image class="image" :src="item" mode="aspectFill"> </image>
               </swiper-item>
             </swiper>
           </uni-swiper-dot>
-          <activities :data="conducting0" />
+          <activities :data="data" />
         </view>
       </template>
       <template v-slot:swiper1>
@@ -32,6 +32,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { onLoad } from "@dcloudio/uni-app";
+import { data } from "../../static/data/activities";
 
 let dotIndex = ref(0);
 
@@ -244,6 +245,11 @@ let conducting4 = ref([
   background-color: $cust-bg-color;
 
   .swiper0 {
+    .dot {
+      border-radius: 8px;
+      margin: 10px 7px;
+    }
+
     .image {
       width: 100% !important;
       height: 180px !important;

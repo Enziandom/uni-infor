@@ -6,12 +6,18 @@ defineProps({
     type: Array<any>
   }
 });
+
+function navigate(id: number) {
+  uni.navigateTo({
+    url: `/pages/detail/detail?id=${id}`
+  });
+}
 </script>
 
 <template>
   <view class="activity-conducting">
-    <view class="activities swiper0">
-      <uni-card class="card" spacing="5px" margin="5px" :is-shadow="true" v-for="(item, index) in data" :key="index">
+    <view class="activities">
+      <uni-card @click="navigate(item.id)" class="card" spacing="5px" margin="7px" :is-shadow="true" v-for="(item, index) in data" :key="index">
         <view class="activity font-color-gray1">
           <view class="top">
             <view class="poster">
