@@ -4,39 +4,40 @@ import { ref, onMounted } from "vue";
 let tabsData = ref<string[]>(["正在进行", "活动预告", "二课活动", "素拓活动", "往期活动"]);
 
 const swiperIndex = ref(0);
-const tabIndex = ref(0);
+const tabBarIndex = ref(0);
 let swiperHeightInfo = ref<any>([{}]);
+
+function calcTabBar(index: number) {
+  translateX.value = (tabItemWidth.value - 50) / 2 + tabItemWidth.value * index;
+  if (index === 0) translateX.value = (tabItemWidth.value - 50) / 2;
+}
 
 function changeTabs(index: number) {
   swiperIndex.value = index;
 }
 
-function changeSwiper(index: any) {
-  let _index = index.detail.current;
-  translateX.value = (tabItemWidth.value - 50) / 2 + tabItemWidth.value * _index;
-  if (_index === 0) {
-    translateX.value = (tabItemWidth.value - 50) / 2;
-  }
-  tabIndex.value = _index;
-  initSwiperHeight(tabIndex.value);
+function changeSwiper({ detail: { current: index } }: any) {
+  calcTabBar(index);
+  tabBarIndex.value = index;
+  calcSwiper(tabBarIndex.value);
 }
 
 let tabItemWidth = ref(0);
 let translateX = ref(0);
 
-function initSwiperHeight(index: number) {
-  uni
-    .createSelectorQuery()
-    .select(".swiper-item-" + index + " > .swiper" + index)
-    .boundingClientRect(data => {
-      if (!swiperHeightInfo.value[index]?.isCalc) {
+function calcSwiper(index: number) {
+  if (!swiperHeightInfo.value[index]?.isCalc) {
+    uni
+      .createSelectorQuery()
+      .select(".swiper-item-" + index + " > .swiper" + index)
+      .boundingClientRect(data => {
         swiperHeightInfo.value[index] = {
           height: data.height + 10,
           isCalc: true
         };
-      }
-    })
-    .exec();
+      })
+      .exec();
+  }
 }
 
 onMounted(() => {
@@ -45,9 +46,9 @@ onMounted(() => {
       success: res => {
         tabItemWidth.value = res.windowWidth / tabsData.value.length;
         translateX.value = (tabItemWidth.value - 50) / 2;
+        calcSwiper(tabBarIndex.value);
       }
     });
-    initSwiperHeight(tabIndex.value);
   }, 0);
 });
 </script>
@@ -55,7 +56,13 @@ onMounted(() => {
 <template>
   <view class="tab-page">
     <view class="tabs">
-      <view class="tab-item" :style="{ width: tabItemWidth + 'px' }" :class="{ 'tab-item-active': tabIndex == index }" v-for="(tabItem, index) in tabsData" :key="index" @tap.stop="changeTabs(index)">
+      <view
+        class="tab-item"
+        :style="{ width: tabItemWidth + 'px' }"
+        :class="{ 'tab-item-active': tabBarIndex == index }"
+        v-for="(tabItem, index) in tabsData"
+        :key="index"
+        @tap.stop="changeTabs(index)">
         {{ tabItem }}
       </view>
       <view class="tab-item-slider" :style="{ transform: 'translateX(' + translateX + 'px)' }"></view>
