@@ -16,7 +16,7 @@ defineProps({
 </script>
 
 <template>
-  <view class="avatar">
+  <view class="component_avatar">
     <image :style="{ width: size, height: size, margin: margin }" :src="src"></image>
   </view>
 </template>
@@ -24,7 +24,7 @@ defineProps({
 <style scoped lang="scss">
 @import "../styles/mixins.scss";
 
-.avatar {
+.component_avatar {
   @include flex();
 
   & > image {
