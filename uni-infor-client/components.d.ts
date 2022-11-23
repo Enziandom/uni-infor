@@ -8,7 +8,6 @@ export {}
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     Activities: typeof import('./src/fragments/Activities.vue')['default']
-    ActivityConducting: typeof import('./src/fragments/ActivityConducting.vue')['default']
     Avatar: typeof import('./src/components/Avatar.vue')['default']
     Comments: typeof import('./src/fragments/Comments.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']

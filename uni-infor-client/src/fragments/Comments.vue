@@ -17,11 +17,10 @@ defineProps({
 <template>
   <view class="fragment__comments">
     <view class="header">
-      <Avatar
-        src="https://img0.baidu.com/it/u=4035474861,2542104387&fm=253&app=138&size=w931&n=0&f=JPEG&fmt=auto?sec=1669309200&t=2efaa5d7b1bc940372363888be7b13f1" />
+      <Avatar :src="data.user.avatar" />
       <view class="col">
         <view class="username size-30">{{ data.user.username }}</view>
-        <view class="post-date size-20 font-color-gray0">{{ data.user.postDate }}</view>
+        <view class="post-date size-20 font-color-gray0">{{ data.postDate }}</view>
       </view>
     </view>
     <view class="content">
