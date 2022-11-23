@@ -125,6 +125,29 @@ function change({ index }: any) {
           </template>
         </tui-timeaxis-item>
       </tui-time-axis>
+      <template v-if="tableData.modifyTimeNode">
+        <uni-title type="h4" title="修改时间线"></uni-title>
+        <tui-time-axis style="margin: 0 7px">
+          <tui-timeaxis-item
+            backgroundColor="transparent"
+            v-for="(timenode, index) in tableData.modifyTimeNode"
+            :key="index">
+            <template v-slot:node>
+              <view class="tui-node">
+                <tui-icon :name="'news'" :color="'#999'" :size="14" bold></tui-icon>
+              </view>
+            </template>
+            <template v-slot:content>
+              <view>
+                <view class="time-node-desc">{{ timenode.desc }}</view>
+                <view class="time-node-time">
+                  {{ timenode.date }}
+                </view>
+              </view>
+            </template>
+          </tui-timeaxis-item>
+        </tui-time-axis>
+      </template>
       <uni-title type="h4" title="问题收集区"> </uni-title>
       <template v-for="(item, index) in dataList" :key="index">
         <tui-collapse :disabled="item.disabled" :index="index" :current="item.current" @click="change">

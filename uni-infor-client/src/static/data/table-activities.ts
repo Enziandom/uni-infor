@@ -29,6 +29,12 @@ export const tableActivities = <any>[
         date: "2022-11-30 18:48:26"
       }
     ],
+    modifyTimeNode: [
+      {
+        desc: "推迟大赛日期到30号",
+        date: "2022-11-20 18:48:26"
+      }
+    ],
     comments: [
       {
         user: {
@@ -162,6 +168,16 @@ export const tableActivities = <any>[
         complete: 0, // false
         desc: "大赛报名阶段和作品收集阶段",
         date: "2022-11-24 18:48:26"
+      }
+    ],
+    modifyTimeNode: [
+      {
+        desc: "修改大赛报名阶段日期",
+        date: "2022-11-15 18:48:26"
+      },
+      {
+        desc: "大赛报名阶段和作品收集变更同一天",
+        date: "2022-11-20 18:48:26"
       }
     ],
     comments: [
