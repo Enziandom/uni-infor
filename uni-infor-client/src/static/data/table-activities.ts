@@ -29,6 +29,107 @@ export const tableActivities = <any>[
         date: "2022-11-30 18:48:26"
       }
     ],
+    comments: [
+      {
+        user: {
+          username: "用户1",
+          avatar: ""
+        },
+        content: "1111111111111111111111",
+        postDate: "",
+        agree: 1,
+        oppose: 0,
+        comments: [
+          {
+            user: {
+              username: "用户1",
+              avatar: ""
+            },
+            content: "1111111111111111111111",
+            sendTo: null,
+            postDate: "",
+            agree: 2,
+            oppose: 0
+          },
+          {
+            user: {
+              username: "用户3",
+              avatar: ""
+            },
+            content: "1111111111111111111111",
+            sendTo: "用户1",
+            postDate: "",
+            agree: 3,
+            oppose: 0
+          }
+        ]
+      },
+      {
+        user: {
+          username: "用户2",
+          avatar: ""
+        },
+        content: "2222222222222222222222",
+        postDate: "",
+        agree: 1,
+        oppose: 0
+      },
+      {
+        user: {
+          username: "用户3",
+          avatar: ""
+        },
+        content: "3333333333333333",
+        postDate: "",
+        agree: 33,
+        oppose: 0
+      },
+      {
+        user: {
+          username: "用户4",
+          avatar: ""
+        },
+        content: "44444444444444444",
+        postDate: "",
+        agree: 10,
+        oppose: 0,
+        comments: [
+          {
+            user: {
+              username: "用户2",
+              avatar: ""
+            },
+            content: "1111111111111111111111",
+            sendTo: null,
+            postDate: "",
+            agree: 4,
+            oppose: 0
+          },
+          {
+            user: {
+              username: "用户1",
+              avatar: ""
+            },
+            content: "1111111111111111111111",
+            sendTo: "用户2",
+            postDate: "",
+            agree: 5,
+            oppose: 0
+          },
+          {
+            user: {
+              username: "用户3",
+              avatar: ""
+            },
+            content: "1111111111111111111111",
+            sendTo: "用户1",
+            postDate: "",
+            agree: 3,
+            oppose: 0
+          }
+        ]
+      }
+    ],
     content:
       "此次程序设计大赛旨在进一步加强学校教学质量工程建设，提高学生们的创造力以及运用计算机技术开发程序的综合能力，培养学生们的创新思维与合作精神，激发广大学生的学习热情。此次程序设计大赛旨在进一步加强学校教学质量工程建设，提高学生们的创造力以及运用计算机技术开发程序的综合能力，培养学生们的创新思维与合作精神，激发广大学生的学习热情。此次程序设计大赛旨在进一步加强学校教学质量工程建设，提高学生们的创造力以及运用计算机技术开发程序的综合能力，培养学生们的创新思维与合作精神，激发广大学生的学习热情。此次程序设计大赛旨在进一步加强学校教学质量工程建设，提高学生们的创造力以及运用计算机技术开发程序的综合能力，培养学生们的创新思维与合作精神，激发广大学生的学习热情。",
     brief:
@@ -63,6 +164,107 @@ export const tableActivities = <any>[
         date: "2022-11-24 18:48:26"
       }
     ],
+    comments: [
+      {
+        user: {
+          username: "用户1",
+          avatar: ""
+        },
+        content: "1111111111111111111111",
+        postDate: "",
+        agree: 1,
+        oppose: 0,
+        comments: [
+          {
+            user: {
+              username: "用户1",
+              avatar: ""
+            },
+            content: "1111111111111111111111",
+            sendTo: null,
+            postDate: "",
+            agree: 2,
+            oppose: 0
+          },
+          {
+            user: {
+              username: "用户3",
+              avatar: ""
+            },
+            content: "1111111111111111111111",
+            sendTo: "用户1",
+            postDate: "",
+            agree: 3,
+            oppose: 0
+          }
+        ]
+      },
+      {
+        user: {
+          username: "用户2",
+          avatar: ""
+        },
+        content: "2222222222222222222222",
+        postDate: "",
+        agree: 1,
+        oppose: 0
+      },
+      {
+        user: {
+          username: "用户3",
+          avatar: ""
+        },
+        content: "3333333333333333",
+        postDate: "",
+        agree: 33,
+        oppose: 0
+      },
+      {
+        user: {
+          username: "用户4",
+          avatar: ""
+        },
+        content: "44444444444444444",
+        postDate: "",
+        agree: 10,
+        oppose: 0,
+        comments: [
+          {
+            user: {
+              username: "用户2",
+              avatar: ""
+            },
+            content: "1111111111111111111111",
+            sendTo: null,
+            postDate: "",
+            agree: 4,
+            oppose: 0
+          },
+          {
+            user: {
+              username: "用户1",
+              avatar: ""
+            },
+            content: "1111111111111111111111",
+            sendTo: "用户2",
+            postDate: "",
+            agree: 5,
+            oppose: 0
+          },
+          {
+            user: {
+              username: "用户3",
+              avatar: ""
+            },
+            content: "1111111111111111111111",
+            sendTo: "用户1",
+            postDate: "",
+            agree: 3,
+            oppose: 0
+          }
+        ]
+      }
+    ],
     content:
       "此次程序设计大赛旨在进一步加强学校教学质量工程建设，提高学生们的创造力以及运用计算机技术开发程序的综合能力，培养学生们的创新思维与合作精神，激发广大学生的学习热情。此次程序设计大赛旨在进一步加强学校教学质量工程建设，提高学生们的创造力以及运用计算机技术开发程序的综合能力，培养学生们的创新思维与合作精神，激发广大学生的学习热情。此次程序设计大赛旨在进一步加强学校教学质量工程建设，提高学生们的创造力以及运用计算机技术开发程序的综合能力，培养学生们的创新思维与合作精神，激发广大学生的学习热情。此次程序设计大赛旨在进一步加强学校教学质量工程建设，提高学生们的创造力以及运用计算机技术开发程序的综合能力，培养学生们的创新思维与合作精神，激发广大学生的学习热情。",
 
@@ -84,6 +286,107 @@ export const tableActivities = <any>[
     opposition: 1,
     approves: 333,
     type: 2,
+    comments: [
+      {
+        user: {
+          username: "用户1",
+          avatar: ""
+        },
+        content: "1111111111111111111111",
+        postDate: "",
+        agree: 1,
+        oppose: 0,
+        comments: [
+          {
+            user: {
+              username: "用户1",
+              avatar: ""
+            },
+            content: "1111111111111111111111",
+            sendTo: null,
+            postDate: "",
+            agree: 2,
+            oppose: 0
+          },
+          {
+            user: {
+              username: "用户3",
+              avatar: ""
+            },
+            content: "1111111111111111111111",
+            sendTo: "用户1",
+            postDate: "",
+            agree: 3,
+            oppose: 0
+          }
+        ]
+      },
+      {
+        user: {
+          username: "用户2",
+          avatar: ""
+        },
+        content: "2222222222222222222222",
+        postDate: "",
+        agree: 1,
+        oppose: 0
+      },
+      {
+        user: {
+          username: "用户3",
+          avatar: ""
+        },
+        content: "3333333333333333",
+        postDate: "",
+        agree: 33,
+        oppose: 0
+      },
+      {
+        user: {
+          username: "用户4",
+          avatar: ""
+        },
+        content: "44444444444444444",
+        postDate: "",
+        agree: 10,
+        oppose: 0,
+        comments: [
+          {
+            user: {
+              username: "用户2",
+              avatar: ""
+            },
+            content: "1111111111111111111111",
+            sendTo: null,
+            postDate: "",
+            agree: 4,
+            oppose: 0
+          },
+          {
+            user: {
+              username: "用户1",
+              avatar: ""
+            },
+            content: "1111111111111111111111",
+            sendTo: "用户2",
+            postDate: "",
+            agree: 5,
+            oppose: 0
+          },
+          {
+            user: {
+              username: "用户3",
+              avatar: ""
+            },
+            content: "1111111111111111111111",
+            sendTo: "用户1",
+            postDate: "",
+            agree: 3,
+            oppose: 0
+          }
+        ]
+      }
+    ],
     timenode: [
       {
         complete: 1, // true

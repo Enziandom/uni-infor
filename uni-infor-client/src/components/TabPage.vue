@@ -54,7 +54,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <view class="conpoment_tab-page">
+  <view class="compoment__tab-page">
     <view class="tab-bar">
       <view
         class="tab-item"
