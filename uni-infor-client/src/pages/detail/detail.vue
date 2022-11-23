@@ -23,7 +23,7 @@ onLoad(({ id }: any) => {
         <Avatar :src="activity.poster.avatar" />
         <view class="name">{{ activity.poster.name }}</view>
       </view>
-      <view class="bottom">
+      <view class="matters">
         <view class="col-1">
           <view class="start-date">开始日期：{{ activity.startDate }}</view>
           <view class="end-date">结束日期：{{ activity.endDate }}</view>
@@ -56,44 +56,25 @@ onLoad(({ id }: any) => {
       <view class="content size-32">{{ activity.content }}</view>
       <uni-title class="title" type="h4" title="活动时间线"></uni-title>
       <tui-time-axis style="margin: 0 7px">
-        <tui-timeaxis-item backgroundColor="transparent">
+        <tui-timeaxis-item backgroundColor="transparent" v-for="(item, index) in activity.timenode" :key="index">
           <template v-slot:node>
             <view class="tui-node">
-              <tui-icon name="check" color="#409eff" :size="14" bold></tui-icon>
+              <tui-icon :name="item.complete ? 'check' : 'loading'" :color="item.complete ? '#999' : '#409eff'" :size="14" bold></tui-icon>
             </view>
           </template>
           <template v-slot:content>
             <view>
-              <view class="tui-order-title">已完成</view>
-              <view class="tui-order-desc">启动仪式</view>
-              <view class="tui-order-time tui-gray">2022-11-18 18:48:26</view>
-            </view>
-          </template>
-        </tui-timeaxis-item>
-        <tui-timeaxis-item backgroundColor="transparent">
-          <template v-slot:node>
-            <view class="tui-node">
-              <tui-icon name="check" color="#409eff" :size="14" bold></tui-icon>
-            </view>
-          </template>
-          <template v-slot:content>
-            <view>
-              <view class="tui-order-title">已完成</view>
-              <view class="tui-order-desc">报名阶段</view>
-              <view class="tui-order-time tui-gray">2022-11-20 18:48:26</view>
-            </view>
-          </template>
-        </tui-timeaxis-item>
-        <tui-timeaxis-item backgroundColor="transparent">
-          <template v-slot:node>
-            <view class="tui-node">
-              <tui-icon name="loading" color="#409eff" :size="14" bold></tui-icon>
-            </view>
-          </template>
-          <template v-slot:content>
-            <view>
-              <view class="tui-order-title tui-order-active">进行中</view>
-              <view class="tui-order-desc">作品收集阶段</view>
+              <view class="tui-order-title">
+                <template v-if="item.complete"> 已完成 </template>
+                <template v-else>进行中</template>
+              </view>
+              <view class="tui-order-desc">{{ item.desc }}</view>
+              <view class="tui-order-time tui-gray">
+                <template v-if="(item.date || !item.date) && !item.complete"> progressing... </template>
+                <template v-else>
+                  {{ item.date }}
+                </template>
+              </view>
             </view>
           </template>
         </tui-timeaxis-item>
